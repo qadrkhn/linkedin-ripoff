@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  app:
+    build:
+      context: ./../../../
+      args:
+        WWWGROUP: '${WWWGROUP:-1000}'
+    environment:
+      WWWUSER: '${WWWUSER:-1000}'
+    volumes:
+      - '../../../:/var/www/html'
+    networks:
+      - linkedin
