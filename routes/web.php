@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Dashboard\DashboardController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,8 +15,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// user routes for registration
 include __DIR__ . '/web/User.php';
+// auth routes for login, logout, password reset etc
+include __DIR__ . '/web/Auth.php';
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Authenticated Routes
+Route::middleware(['auth'])->group(function () {
+    // Dashboard route
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+});
+
+

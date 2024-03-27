@@ -32,6 +32,6 @@ class UserController extends Controller
             DB::rollBack();
             return back()->with($e->getMessage());
         }
-        return ('store seeker');
+        return redirect()->route('login');
     }
 }
