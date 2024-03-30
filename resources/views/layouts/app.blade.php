@@ -25,7 +25,7 @@
                                 <a class="nav-link" href="{{ route('register.seeker') }}">Job Seeker</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Employer</a>
+                                <a class="nav-link" href="{{ route('register.employer') }}">Employer</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">Login</a>

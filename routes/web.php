@@ -21,7 +21,7 @@ include __DIR__ . '/web/User.php';
 include __DIR__ . '/web/Auth.php';
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/dashboard');
 });
 
 // Authenticated Routes

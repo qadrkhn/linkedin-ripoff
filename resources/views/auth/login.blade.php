@@ -6,9 +6,11 @@
         <div class="row justify-content-center">
             <div class="col-md-6 mt-5 mb-5">
                 <div class="card shadow-lg" id="card" style="margin-top : 50px;">
+                    @include('messages')
                     <div class="card-header text-center" style="font-size : 1.4rem">Login</div>
                     <form action="{{ route('login.post') }}" method="post" id="loginForm">
                         <div class="card-body">
+
                             <form action=""  method="post">
                                 @csrf
                                 <div class="form-group mt-3">
