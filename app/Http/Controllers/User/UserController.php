@@ -20,17 +20,19 @@ class UserController extends Controller
     {
         try {
             DB::beginTransaction();
-            User::create([
+            $user = User::create([
                 'name' => request('name'),
                 'email' => request('email'),
                 'password' => bcrypt(request('password')),
                 'user_type' => RoleConstants::SEEKER,
             ]);
+            $user->assignRole(RoleConstants::SEEKER);
 
             DB::commit();
 
         } catch (\Exception $e) {
             DB::rollBack();
+            dd($e->getMessage());
             return back()->with($e->getMessage());
         }
         return redirect()->route('login')->with('successMessage', 'Account created successfully');;
@@ -45,12 +47,14 @@ class UserController extends Controller
     {
         try {
             DB::beginTransaction();
-            User::create([
+            $user = User::create([
                 'name' => request('name'),
                 'email' => request('email'),
                 'password' => bcrypt(request('password')),
                 'user_type' => RoleConstants::POSTER,
+                'user_trial' => now()->addWeek(),
             ]);
+            $user->assignRole(RoleConstants::POSTER);
 
             DB::commit();
 
